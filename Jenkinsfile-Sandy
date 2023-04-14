@@ -1,0 +1,43 @@
+@Library('JenkinsSharedLibraries') _
+
+pipeline{
+    agent{
+        label "tomcat"
+    }
+    tools{
+        maven "Maven"
+    }
+    stages{
+        stage('git clone'){
+            steps{
+                git 'https://github.com/sobengdarko/maven-web-application'
+            }
+        }
+        stage('Build'){
+            steps{
+                common('Build')
+            }
+        }
+        stage('SonarQube Report'){
+            steps{
+                sh "echo starting static code analysis"
+                common('SonarQube Report')
+            }
+        }
+       stage('Upload Into Nexus'){
+            steps{
+                common('Upload Into Nexus')
+            }
+       }
+       stage('Input'){
+            steps{
+                common('Input')
+            }
+       }
+       stage('Deploy to tomcat'){
+            steps{
+             deploy adapters: [tomcat9(credentialsId: 'sandycredentials', path: '', url: 'http://35.91.120.117:8080/')], contextPath: null, war: 'target/*.war'
+    }
+       }
+    }
+}
