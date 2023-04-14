@@ -95,13 +95,13 @@
 	    <repository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Releases Nexus Repository</name>
-	      <url>http://34.211.12.49:8181/mysandytech/repository/practicals-release/</url>
+	      <url>http://18.237.57.163:8181/mysandytech/repository/practicals-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
 	      <name>Landmark Technologies Snapshot Nexus Repository </name>
-	      <url>http://34.211.12.49:8181/mysandytech/repository/practicals-snapshots/</url>
+	      <url>http://18.237.57.163:8181/mysandytech/repository/practicals-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
